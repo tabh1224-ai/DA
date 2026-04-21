@@ -389,6 +389,23 @@
       justify-content: center;
       text-align: center;
       box-shadow: 0 14px 28px rgba(0,0,0,0.05);
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+    }
+
+    .flow-card:hover {
+      transform: translateY(-6px) scale(1.04);
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      border-color: rgba(230,184,69,0.4);
+      box-shadow: 0 20px 40px rgba(230,184,69,0.25);
+    }
+
+    .flow-card:hover h4 {
+      color: #1b1b1b;
+    }
+
+    .flow-card:hover p {
+      color: rgba(27,27,27,0.8);
     }
 
     .flow-card::before {
@@ -435,6 +452,8 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       text-align: center;
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+      cursor: pointer;
     }
 
     .platform-card h4 {
@@ -447,6 +466,23 @@
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
+      transition: color .25s ease;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      border-color: rgba(230,184,69,0.4);
+      box-shadow: 0 18px 36px rgba(230,184,69,0.25);
+      color: #1b1b1b;
+    }
+
+    .platform-card:hover h4 {
+      color: #1b1b1b;
+    }
+
+    .platform-card:hover p {
+      color: rgba(27,27,27,0.8);
     }
 
     .split-grid {
@@ -538,11 +574,15 @@
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 10px 24px rgba(0,0,0,0.04);
-      transition: .25s ease;
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
     }
 
     .work-tab-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.06);
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      color: #1b1b1b;
+      border-color: rgba(230,184,69,0.35);
+      box-shadow: 0 14px 28px rgba(230,184,69,0.22);
     }
 
     .work-tab-btn.active {
@@ -1034,7 +1074,7 @@
               <div class="work-inner">
                 <div class="work-top">
                   <span class="work-chip">디자인 운영</span>
-                  <span class="work-no">NO.3</span>
+                  <span class="work-no">NO.4</span>
                 </div>
                 <div class="work-title">디자인 관리</div>
                 <p class="work-desc">배너, 썸네일, 상세 영역 등 고객 접점에 노출되는 디자인 요소를 정리해 전체 완성도를 높입니다.</p>
@@ -1051,7 +1091,7 @@
               <div class="work-inner">
                 <div class="work-top">
                   <span class="work-chip">고객 응대</span>
-                  <span class="work-no">NO.4</span>
+                  <span class="work-no">NO.5</span>
                 </div>
                 <div class="work-title">리뷰 답변 관리</div>
                 <p class="work-desc">리뷰 응대와 고객 커뮤니케이션 관리를 통해 매장 신뢰도와 재주문 가능성을 함께 높입니다.</p>
