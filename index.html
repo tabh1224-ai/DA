@@ -1,133 +1,1239 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DA PARTNERS</title>
-<style>
-body{font-family:Pretendard, sans-serif;margin:0;background:#fff8e7}
-.section{padding:80px 20px}
-.container{max-width:1100px;margin:auto}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DA PARTNERS | 배달앱 운영 파트너</title>
+  <style>
+    :root {
+      --bg: #fff9ee;
+      --bg2: #fff3cf;
+      --card: rgba(255,255,255,0.82);
+      --line: rgba(34,34,34,0.08);
+      --text: #1f1f1f;
+      --muted: #666;
+      --point: #e6b845;
+      --point-deep: #bb880f;
+      --dark: #222;
+      --shadow: 0 18px 44px rgba(0,0,0,0.08);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1180px;
+    }
 
-.platform-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.platform-card{
-padding:24px;border-radius:20px;background:#fff;
-transition:.25s;cursor:pointer;text-align:center
-}
-.platform-card:hover{
-transform:translateY(-6px) scale(1.03);
-background:linear-gradient(135deg,#e6b845,#f4cb66);
-box-shadow:0 18px 36px rgba(230,184,69,0.25);
-}
-.platform-card:hover h4,.platform-card:hover p{color:#1b1b1b}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 221, 111, 0.22), transparent 18%),
+        radial-gradient(circle at 90% 15%, rgba(255, 226, 137, 0.18), transparent 20%),
+        linear-gradient(180deg, #fffdf8 0%, #fff8e7 40%, #fffdf8 100%);
+      line-height: 1.65;
+    }
 
-.platform-icon{
-width:60px;height:60px;margin:0 auto 12px;
-border-radius:50%;background:#fff;
-display:flex;align-items:center;justify-content:center;
-box-shadow:0 6px 12px rgba(0,0,0,0.08)
-}
-.platform-icon img{width:32px;height:32px}
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-.work-tab-buttons{display:flex;gap:10px;justify-content:center;margin-bottom:20px}
-.work-tab-btn{
-padding:10px 16px;border-radius:999px;border:none;cursor:pointer;
-background:#fff;transition:.25s
-}
-.work-tab-btn:hover{
-transform:scale(1.05);
-background:#f4cb66
-}
-.work-tab-btn.active{background:#e6b845}
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
 
-.work-panel{display:none;padding:40px;border-radius:20px;background:#222;color:#fff}
-.work-panel.active{display:block}
+    .section { padding: 110px 0; }
 
-</style>
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(230,184,69,0.12);
+      border: 1px solid rgba(230,184,69,0.22);
+      color: var(--point-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    h1,h2,h3,h4,p,ul,li { margin: 0; padding: 0; }
+
+    h1 {
+      font-size: clamp(38px, 5.5vw, 68px);
+      line-height: 1.12;
+      letter-spacing: -0.05em;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 3.6vw, 48px);
+      line-height: 1.18;
+      letter-spacing: -0.045em;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -0.04em;
+    }
+
+    .lead {
+      font-size: clamp(16px, 1.55vw, 20px);
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .btn-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 170px;
+      height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: .25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      color: #1b1b1b;
+      box-shadow: 0 12px 26px rgba(230,184,69,0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.72);
+      border-color: rgba(34,34,34,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 250, 239, 0.8);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(34,34,34,0.05);
+    }
+
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 1px solid rgba(34,34,34,0.08);
+    }
+
+    .brand span { font-size: 18px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #444;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 72px 0 90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-copy-wrap {
+      position: relative;
+      overflow: hidden;
+      padding: 54px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.84), rgba(255,252,244,0.62)),
+        linear-gradient(135deg, rgba(255,244,207,0.92), rgba(255,249,234,0.88));
+      border: 1px solid rgba(34,34,34,0.06);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy-wrap::before,
+    .hero-copy-wrap::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(230,184,69,0.1);
+      z-index: 0;
+    }
+
+    .hero-copy-wrap::before {
+      width: 280px;
+      height: 280px;
+      top: -110px;
+      right: -100px;
+    }
+
+    .hero-copy-wrap::after {
+      width: 180px;
+      height: 180px;
+      bottom: -60px;
+      left: -60px;
+    }
+
+    .hero-copy { position: relative; z-index: 1; }
+    .hero-copy strong { color: var(--point-deep); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(34,34,34,0.06);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-size: 20px;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 560px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(34,34,34,0.05);
+      background: #f7edcf;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15,15,15,0.1) 0%, rgba(15,15,15,0.55) 100%);
+    }
+
+    .hero-badge {
+      position: absolute;
+      left: 26px;
+      bottom: 26px;
+      right: 26px;
+      padding: 20px 22px;
+      border-radius: 20px;
+      background: rgba(20,20,20,0.72);
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-badge strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-badge p {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .banner-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      min-height: 190px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(34,34,34,0.06);
+      margin-bottom: 22px;
+      background: #2a241a;
+    }
+
+    .banner-card:last-child { margin-bottom: 0; }
+
+    .banner-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.24;
+    }
+
+    .banner-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(24,20,14,0.88), rgba(36,30,20,0.72));
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      padding: 30px;
+      color: #fff;
+    }
+
+    .banner-chip {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #f2d27a;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .banner-content h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+    }
+
+    .banner-content p {
+      color: rgba(255,255,255,0.82);
+      max-width: 620px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .service-box {
+      position: relative;
+      padding: 40px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(34,34,34,0.06);
+      box-shadow: var(--shadow);
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: center;
+      margin-top: 28px;
+    }
+
+    .flow-card {
+      position: relative;
+      min-height: 240px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #fffdf9 0%, #fff6dc 100%);
+      border: 1px solid rgba(34,34,34,0.06);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.05);
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+    }
+
+    .flow-card:hover {
+      transform: translateY(-6px) scale(1.04);
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      border-color: rgba(230,184,69,0.4);
+      box-shadow: 0 20px 40px rgba(230,184,69,0.25);
+    }
+
+    .flow-card:hover h4 {
+      color: #1b1b1b;
+    }
+
+    .flow-card:hover p {
+      color: rgba(27,27,27,0.8);
+    }
+
+    .flow-card::before {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      background: rgba(230,184,69,0.12);
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .flow-card h4 {
+      position: relative;
+      z-index: 1;
+      font-size: 24px;
+      margin-top: 8px;
+      margin-bottom: 14px;
+      line-height: 1.35;
+      letter-spacing: -0.04em;
+    }
+
+    .flow-card p {
+      position: relative;
+      z-index: 1;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .platform-card {
+      padding: 24px 20px;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+    }
+
+    .platform-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      transition: transform .25s ease, background .25s ease;
+    }
+
+    .platform-icon img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .platform-card h4 {
+      font-size: 18px;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .platform-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      transition: color .25s ease;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      border-color: rgba(230,184,69,0.4);
+      box-shadow: 0 18px 36px rgba(230,184,69,0.25);
+      color: #1b1b1b;
+    }
+
+    .platform-card:hover .platform-icon {
+      transform: scale(1.08);
+      background: rgba(255,255,255,0.98);
+    }
+
+    .platform-card:hover h4 {
+      color: #1b1b1b;
+    }
+
+    .platform-card:hover p {
+      color: rgba(27,27,27,0.8);
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .info-card {
+      padding: 38px;
+      border-radius: 28px;
+      border: 1px solid rgba(34,34,34,0.06);
+      box-shadow: var(--shadow);
+    }
+
+    .info-dark {
+      background: linear-gradient(180deg, #262117 0%, #1d1912 100%);
+      color: #fff;
+    }
+
+    .info-dark p,
+    .info-dark li { color: rgba(255,255,255,0.78); }
+
+    .info-light {
+      background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,247,224,0.92) 100%);
+      transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+    }
+
+    .info-light:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      box-shadow: 0 22px 44px rgba(230,184,69,0.28);
+    }
+
+    .info-light:hover h2,
+    .info-light:hover p,
+    .info-light:hover strong {
+      color: #1b1b1b;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .bullet-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(34,34,34,0.06);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .info-light .bullet-item {
+      background: rgba(255,255,255,0.78);
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+    }
+
+    .info-light .bullet-item:hover {
+      transform: translateY(-6px) scale(1.03);
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      border-color: rgba(230,184,69,0.4);
+      box-shadow: 0 18px 36px rgba(230,184,69,0.25);
+    }
+
+    .info-light .bullet-item:hover strong {
+      color: #1b1b1b;
+    }
+
+    .info-light .bullet-item:hover {
+      color: rgba(27,27,27,0.85);
+    }
+
+    .num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--point);
+      color: #1f1f1f;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+
+    .bullet-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .work-tabs {
+      margin-top: 30px;
+    }
+
+    .work-tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .work-tab-btn {
+      appearance: none;
+      border: 1px solid rgba(34,34,34,0.08);
+      background: rgba(255,255,255,0.78);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .work-tab-btn:hover {
+      transform: translateY(-2px) scale(1.06);
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      color: #1b1b1b;
+      border-color: rgba(230,184,69,0.35);
+      box-shadow: 0 14px 28px rgba(230,184,69,0.22);
+    }
+
+    .work-tab-btn.active {
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      color: #1b1b1b;
+      border-color: rgba(230,184,69,0.35);
+    }
+
+    .work-panels {
+      position: relative;
+    }
+
+    .work-panel {
+      display: none;
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      border-radius: 28px;
+      border: 1px solid rgba(34,34,34,0.06);
+      box-shadow: var(--shadow);
+      background: #241e15;
+    }
+
+    .work-panel.active {
+      display: block;
+    }
+
+    .work-panel img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.22;
+    }
+
+    .work-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(20,18,14,0.92) 0%, rgba(20,18,14,0.76) 50%, rgba(20,18,14,0.48) 100%);
+    }
+
+    .work-inner {
+      position: relative;
+      z-index: 1;
+      padding: 34px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 760px;
+      min-height: 360px;
+      justify-content: center;
+    }
+
+    .work-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .work-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #f2d27a;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .work-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(230,184,69,0.18);
+      border: 1px solid rgba(230,184,69,0.3);
+      color: #f7d57f;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .work-title {
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+    }
+
+    .work-desc {
+      color: rgba(255,255,255,0.82);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 720px;
+    }
+
+    .work-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .work-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.88);
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .work-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .work-arrow {
+      appearance: none;
+      border: 1px solid rgba(34,34,34,0.08);
+      background: rgba(255,255,255,0.78);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .work-arrow:hover {
+      transform: translateY(-2px);
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      padding: 58px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%);
+      color: #fff;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(230,184,69,0.12);
+      right: -120px;
+      top: -120px;
+    }
+
+    .cta-box p {
+      color: rgba(255,255,255,0.78);
+      max-width: 700px;
+      margin-top: 10px;
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid rgba(34,34,34,0.06);
+      padding-top: 26px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .split-grid { grid-template-columns: 1fr; }
+      .platform-grid { grid-template-columns: repeat(2, 1fr); }
+      .flow-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 440px; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 80px 0; }
+      .nav { height: 72px; }
+      .nav-links { display: none; }
+      .hero-copy-wrap,
+      .service-box,
+      .info-card,
+      .cta-box { padding: 28px; }
+      .hero-stats,
+      .platform-grid { grid-template-columns: 1fr; }
+      .btn-wrap { flex-direction: column; }
+      .btn { width: 100%; }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .banner-content { padding: 24px; }
+      .banner-content h3 { font-size: 24px; }
+      .work-tab-buttons {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
+      }
+      .work-panel {
+        min-height: 420px;
+      }
+      .work-inner {
+        min-height: 420px;
+        padding: 24px;
+      }
+      .work-title {
+        font-size: 24px;
+      }
+      .work-desc {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <img src="logo.jpg" alt="DA PARTNERS 로고" />
+        <span>DA PARTNERS</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#intro">소개</a>
+        <a href="#service">서비스</a>
+        <a href="#platform">플랫폼</a>
+        <a href="#strength">강점</a>
+        <a href="#contact">문의</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="section">
-<div class="container">
-<h2>플랫폼 관리</h2>
+  <main id="top">
+    <section class="hero" id="intro">
+      <div class="container hero-grid">
+        <div class="hero-copy-wrap">
+          <div class="hero-copy">
+            <div class="eyebrow">배달앱 운영 대행 · 플랫폼 최적화 · 통합 관리</div>
+            <h1>사장님은 조리에만 집중하세요.<br><strong>배달앱 성장은 DA PARTNERS</strong>가 책임집니다.</h1>
+            <p class="lead">
+              매장 상황에 맞춘 배달앱 운영 전략부터 플랫폼별 최적화 관리까지.<br>
+              DA PARTNERS는 실무 중심의 운영 솔루션으로 안정적인 성장을 돕습니다.
+            </p>
+            <div class="btn-wrap">
+              <a href="#contact" class="btn btn-primary">상담 문의하기</a>
+              <a href="#service" class="btn btn-secondary">서비스 보기</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <b>맞춤 운영</b>
+                <span>매장별 운영 구조 설계</span>
+              </div>
+              <div class="stat">
+                <b>전략 관리</b>
+                <span>주문 흐름 개선 중심</span>
+              </div>
+              <div class="stat">
+                <b>통합 대응</b>
+                <span>플랫폼 전체 관리</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<div class="platform-grid">
+        <div class="hero-visual">
+          <img src="hero-image.jpg" alt="DA PARTNERS 메인 이미지" />
+          <div class="hero-overlay"></div>
+          <div class="hero-badge">
+            <strong>배달앱 운영의 시작은 결국 구조와 관리입니다</strong>
+            <p>감으로 운영하는 것이 아니라, 실제 매장 상황에 맞춘 전략과 실행으로 효율적인 배달앱 운영 환경을 만듭니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="platform-card">
-<div class="platform-icon"><img src="baemin.png"></div>
-<h4>배달의민족</h4>
-<p>메뉴 구성, 운영 흐름, 노출 포인트를 점검해 기본 운영 구조를 안정화합니다.</p>
-</div>
+    <section class="section">
+      <div class="container">
+        <div class="banner-card">
+          <img src="section-bg-1.jpg" alt="배경 이미지" />
+          <div class="banner-content">
+            <span class="banner-chip">SECTION 01</span>
+            <h3>배달앱 관리의 시작은 역시, DA PARTNERS</h3>
+            <p>배달의민족, 요기요, 쿠팡이츠 운영 관리부터 노출 전략과 구조 정리까지. 복잡하게 흩어진 운영 요소를 하나의 흐름으로 정리해드립니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="platform-card">
-<div class="platform-icon"><img src="yogiyo.png"></div>
-<h4>요기요</h4>
-<p>플랫폼 특성에 맞는 운영 방식으로 주문 연결 가능성을 높입니다.</p>
-</div>
+    <section class="section" id="service">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">사장님 이제 아직도 그냥 운영만 하시나요?</div>
+          <h2>매장에 맞춘 운영 구조가 있어야<br>주문도, 효율도 함께 올라갑니다</h2>
+          <p class="lead">손메모에서 잡아주신 3단 구조 그대로 반영한 서비스 흐름입니다.</p>
+        </div>
 
-<div class="platform-card">
-<div class="platform-icon"><img src="coupang.png"></div>
-<h4>쿠팡이츠</h4>
-<p>간결한 구조 안에서 효율적으로 운영될 수 있도록 관리 포인트를 정리합니다.</p>
-</div>
+        <div class="service-box">
+          <div class="flow-grid">
+            <div class="flow-card">
+              <h4>사장님 맞춤형<br>배달앱 시스템 구축</h4>
+              <p>매장 특성과 운영 상황을 분석해 업종에 맞는 배달앱 기본 구조와 운영 환경을 세팅합니다.</p>
+            </div>
+            <div class="flow-card">
+              <h4>주문이 늘어나는<br>배달앱 운영 전략</h4>
+              <p>메뉴 노출 방식, 주문 흐름, 고객 반응을 반영한 실전형 운영 전략으로 효율을 높입니다.</p>
+            </div>
+            <div class="flow-card">
+              <h4>배달 플랫폼<br>운영 최적화 서비스</h4>
+              <p>배민, 요기요, 쿠팡이츠 등 각 플랫폼 특성에 맞춰 더 안정적이고 체계적으로 관리합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="platform-card">
-<div class="platform-icon"><img src="daangn.png"></div>
-<h4>당근</h4>
-<p>지역 기반 고객 유입 채널로 활용해 매장 인지도와 접근성을 높입니다.</p>
-</div>
+    <section class="section" id="platform">
+      <div class="container">
+        <div class="banner-card">
+          <img src="section-bg-2.jpg" alt="배경 이미지" />
+          <div class="banner-content">
+            <span class="banner-chip">SECTION 02</span>
+            <h3>유일무이, 모든 플랫폼 관리</h3>
+            <p>손메모 요청대로 네이버보다 당근을 강조하는 방향으로 수정 가능하며, 현재는 전체 플랫폼 운영 구조 소개 섹션으로 구성했습니다.</p>
+          </div>
+        </div>
 
-</div>
-</div>
-</section>
+        <div class="platform-grid">
+          <div class="platform-card">
+            <div class="platform-icon">
+              <img src="baemin.png" alt="배달의민족">
+            </div>
+            <h4>배달의민족</h4>
+            <p>메뉴 구성, 운영 흐름, 노출 포인트를 점검해 기본 운영 구조를 안정화합니다.</p>
+          </div>
 
-<section class="section">
-<div class="container">
-<h2>주요 업무</h2>
+          <div class="platform-card">
+            <div class="platform-icon">
+              <img src="yogiyo.png" alt="요기요">
+            </div>
+            <h4>요기요</h4>
+            <p>플랫폼 특성에 맞는 운영 방식으로 주문 연결 가능성을 높이는 방향을 제안합니다.</p>
+          </div>
 
-<div class="work-tab-buttons">
-<button class="work-tab-btn active" data-tab="0">배달앱 관리</button>
-<button class="work-tab-btn" data-tab="1">메뉴 구성</button>
-<button class="work-tab-btn" data-tab="2">디자인 관리</button>
-<button class="work-tab-btn" data-tab="3">리뷰 관리</button>
-</div>
+          <div class="platform-card">
+            <div class="platform-icon">
+              <img src="coupang.png" alt="쿠팡이츠">
+            </div>
+            <h4>쿠팡이츠</h4>
+            <p>간결한 구조 안에서 효율적으로 운영될 수 있도록 관리 포인트를 정리합니다.</p>
+          </div>
 
-<div class="work-panel active">
-<h3>배달앱 최적화 관리</h3>
-<p>플랫폼별 구조 및 노출 최적화</p>
-</div>
+          <div class="platform-card">
+            <div class="platform-icon">
+              <img src="daangn.png" alt="당근">
+            </div>
+            <h4>당근</h4>
+            <p>지역 기반 고객 유입 채널로 활용해 매장 인지도와 접근성을 함께 높일 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="work-panel">
-<h3>메뉴 구성</h3>
-<p>구매 전환 중심 메뉴 설계</p>
-</div>
+    <section class="section" id="strength">
+      <div class="container split-grid">
+        <div class="info-card info-dark">
+          <div class="eyebrow" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.08); color: #f0cf75;">운영의 문제점</div>
+          <h2>배달앱은 열어두기만 한다고<br>성과가 나오는 구조가 아닙니다</h2>
+          <p class="lead" style="color: rgba(255,255,255,0.76); margin-top: 10px;">혼자 관리할수록 플랫폼별 대응이 분산되고, 노출과 주문 흐름도 불안정해질 수 있습니다.</p>
+          <div class="bullet-list">
+            <div class="bullet-item">
+              <span class="num">1</span>
+              <div>
+                <strong>운영 기준이 모호함</strong>
+                무엇부터 손봐야 하는지 기준이 없으면 관리 효율이 떨어집니다.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="num">2</span>
+              <div>
+                <strong>노출과 주문 연결이 약함</strong>
+                단순 노출만으로는 매출로 이어지기 어렵고 구조 개선이 필요합니다.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="num">3</span>
+              <div>
+                <strong>플랫폼 관리가 분산됨</strong>
+                각각 따로 대응하면 시간 소모와 운영 피로도가 커집니다.
+              </div>
+            </div>
+          </div>
+        </div>
 
-<div class="work-panel">
-<h3>디자인 관리</h3>
-<p>썸네일/배너 최적화</p>
-</div>
+        <div class="info-card info-light">
+          <div class="eyebrow">DA PARTNERS 강점</div>
+          <h2>운영은 더 단단하게,<br>성장은 더 체계적으로</h2>
+          <p class="lead">손메모 4번의 강점 섹션 방향에 맞춰, 퍼센트 중심이 아닌 신뢰형 문구로 정리했습니다.</p>
+          <div class="bullet-list">
+            <div class="bullet-item">
+              <span class="num">1</span>
+              <div>
+                <strong>매장별 맞춤 운영 구조</strong>
+                모든 매장에 같은 방식이 아닌, 업종과 운영 방식에 맞는 전략을 설계합니다.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="num">2</span>
+              <div>
+                <strong>실무 중심의 운영 제안</strong>
+                과장된 표현보다 실제 적용 가능한 관리 방식으로 방향을 잡아드립니다.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="num">3</span>
+              <div>
+                <strong>복수 플랫폼 통합 관리</strong>
+                여러 채널을 하나의 흐름으로 정리해 더 효율적인 운영 환경을 만듭니다.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="work-panel">
-<h3>리뷰 관리</h3>
-<p>고객 응대 및 신뢰도 강화</p>
-</div>
+    <section class="section" id="work">
+      <div class="container">
+        <div class="banner-card">
+          <img src="section-bg-3.jpg" alt="배경 이미지" />
+          <div class="banner-content">
+            <span class="banner-chip">SECTION 03</span>
+            <h3>주요 업무</h3>
+            <p>배달앱 관리, 메뉴 구성, 디자인 관리, 리뷰 답변 관리까지 버튼을 눌러 항목별로 확인할 수 있습니다.</p>
+          </div>
+        </div>
 
-</div>
-</section>
+        <div class="work-tabs">
+          <div class="work-tab-buttons">
+            <button class="work-tab-btn active" data-tab="0">배달앱 관리</button>
+            <button class="work-tab-btn" data-tab="1">메뉴 구성</button>
+            <button class="work-tab-btn" data-tab="2">디자인 관리</button>
+            <button class="work-tab-btn" data-tab="3">리뷰 답변 관리</button>
+          </div>
 
-<script>
-const btns=document.querySelectorAll('.work-tab-btn')
-const panels=document.querySelectorAll('.work-panel')
+          <div class="work-panels">
+            <div class="work-panel active">
+              <img src="work-1.jpg" alt="배달앱 최적화 관리" />
+              <div class="work-inner">
+                <div class="work-top">
+                  <span class="work-chip">배달앱 관리</span>
+                  <span class="work-no">NO.1</span>
+                </div>
+                <div class="work-title">배달앱 최적화 관리</div>
+                <p class="work-desc">배달의민족, 요기요, 쿠팡이츠 등 플랫폼별 특성에 맞춰 노출, 구성, 운영 흐름을 최적화합니다.</p>
+                <div class="work-meta">
+                  <span class="work-badge">플랫폼별 운영 및 세팅</span>
+                  <span class="work-badge">노출 최적화 관리</span>
+                  <span class="work-badge">상세 구성 점검</span>
+                </div>
+              </div>
+            </div>
 
-btns.forEach((btn,i)=>{
-btn.addEventListener('click',()=>{
-btns.forEach(b=>b.classList.remove('active'))
-panels.forEach(p=>p.classList.remove('active'))
-btn.classList.add('active')
-panels[i].classList.add('active')
-})
-})
-</script>
+            <div class="work-panel">
+              <img src="work-2.jpg" alt="메뉴 구성 및 노출 개선" />
+              <div class="work-inner">
+                <div class="work-top">
+                  <span class="work-chip">메뉴 구성</span>
+                  <span class="work-no">NO.2</span>
+                </div>
+                <div class="work-title">메뉴 구성 및 노출 개선</div>
+                <p class="work-desc">고객이 선택하기 쉬운 메뉴 흐름과 노출 전략으로 주문 전환을 높일 수 있는 방향을 제안합니다.</p>
+                <div class="work-meta">
+                  <span class="work-badge">메뉴 구조 컨설팅</span>
+                  <span class="work-badge">썸네일 · 설명 최적화</span>
+                  <span class="work-badge">구매 동선 정리</span>
+                </div>
+              </div>
+            </div>
 
+            <div class="work-panel">
+              <img src="work-3.jpg" alt="디자인 관리" />
+              <div class="work-inner">
+                <div class="work-top">
+                  <span class="work-chip">디자인 운영</span>
+                  <span class="work-no">NO.4</span>
+                </div>
+                <div class="work-title">디자인 관리</div>
+                <p class="work-desc">배너, 썸네일, 상세 영역 등 고객 접점에 노출되는 디자인 요소를 정리해 전체 완성도를 높입니다.</p>
+                <div class="work-meta">
+                  <span class="work-badge">썸네일 관리</span>
+                  <span class="work-badge">배너/상세 영역 정리</span>
+                  <span class="work-badge">브랜드 톤 유지</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-panel">
+              <img src="work-4.jpg" alt="리뷰 답변 관리" />
+              <div class="work-inner">
+                <div class="work-top">
+                  <span class="work-chip">고객 응대</span>
+                  <span class="work-no">NO.5</span>
+                </div>
+                <div class="work-title">리뷰 답변 관리</div>
+                <p class="work-desc">리뷰 응대와 고객 커뮤니케이션 관리를 통해 매장 신뢰도와 재주문 가능성을 함께 높입니다.</p>
+                <div class="work-meta">
+                  <span class="work-badge">리뷰 응대 관리</span>
+                  <span class="work-badge">고객 커뮤니케이션</span>
+                  <span class="work-badge">브랜드 신뢰도 강화</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-nav">
+            <button class="work-arrow" id="workPrev">← 이전</button>
+            <button class="work-arrow" id="workNext">다음 →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <div class="eyebrow" style="background: rgba(230,184,69,0.16); border-color: rgba(230,184,69,0.18); color: #f2cb69;">CONTACT</div>
+          <h2>혼자 운영하기 버거우셨다면,<br>이제는 DA PARTNERS와 함께 시작해보세요</h2>
+          <p>매장 상황에 맞는 배달앱 운영 전략과 플랫폼 최적화가 필요하다면 상담을 통해 현재 상태부터 차근차근 정리해드립니다.</p>
+          <div class="btn-wrap">
+            <a href="https://open.kakao.com/" class="btn btn-primary">카카오톡 상담하기</a>
+            <a href="tel:010-0000-0000" class="btn btn-secondary">전화 문의하기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 DA PARTNERS. All rights reserved.</div>
+      <div>배달앱 운영 대행 · 플랫폼 최적화 · 통합 플랫폼 관리</div>
+    </div>
+  </footer>
+
+  <script>
+    const workButtons = document.querySelectorAll('.work-tab-btn');
+    const workPanels = document.querySelectorAll('.work-panel');
+    const prevBtn = document.getElementById('workPrev');
+    const nextBtn = document.getElementById('workNext');
+    let currentWorkIndex = 0;
+
+    function setWorkTab(index) {
+      currentWorkIndex = index;
+      workButtons.forEach((button, i) => {
+        button.classList.toggle('active', i === index);
+      });
+      workPanels.forEach((panel, i) => {
+        panel.classList.toggle('active', i === index);
+      });
+    }
+
+    workButtons.forEach((button, index) => {
+      button.addEventListener('click', () => setWorkTab(index));
+    });
+
+    prevBtn.addEventListener('click', () => {
+      const nextIndex = (currentWorkIndex - 1 + workPanels.length) % workPanels.length;
+      setWorkTab(nextIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const nextIndex = (currentWorkIndex + 1) % workPanels.length;
+      setWorkTab(nextIndex);
+    });
+  </script>
 </body>
 </html>
