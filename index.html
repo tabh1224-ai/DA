@@ -113,6 +113,7 @@
       font-weight: 700;
       transition: .25s ease;
       border: 1px solid transparent;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -514,24 +515,62 @@
       letter-spacing: -0.03em;
     }
 
-    /* 주요업무 배너형 리스트 */
-    .work-wrap {
+    .work-tabs {
       margin-top: 30px;
-      display: grid;
-      gap: 18px;
     }
 
-    .work-banner {
+    .work-tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .work-tab-btn {
+      appearance: none;
+      border: 1px solid rgba(34,34,34,0.08);
+      background: rgba(255,255,255,0.78);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+      transition: .25s ease;
+    }
+
+    .work-tab-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .work-tab-btn.active {
+      background: linear-gradient(135deg, var(--point), #f4cb66);
+      color: #1b1b1b;
+      border-color: rgba(230,184,69,0.35);
+    }
+
+    .work-panels {
+      position: relative;
+    }
+
+    .work-panel {
+      display: none;
       position: relative;
       overflow: hidden;
-      min-height: 185px;
-      border-radius: 24px;
+      min-height: 360px;
+      border-radius: 28px;
       border: 1px solid rgba(34,34,34,0.06);
       box-shadow: var(--shadow);
       background: #241e15;
     }
 
-    .work-banner img {
+    .work-panel.active {
+      display: block;
+    }
+
+    .work-panel img {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -540,23 +579,24 @@
       opacity: 0.22;
     }
 
-    .work-banner::after {
+    .work-panel::after {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(90deg, rgba(20,18,14,0.92) 0%, rgba(20,18,14,0.78) 45%, rgba(20,18,14,0.55) 100%);
+      background: linear-gradient(90deg, rgba(20,18,14,0.92) 0%, rgba(20,18,14,0.76) 50%, rgba(20,18,14,0.48) 100%);
     }
 
     .work-inner {
       position: relative;
       z-index: 1;
-      padding: 28px 30px;
+      padding: 34px;
       color: #fff;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       max-width: 760px;
+      min-height: 360px;
+      justify-content: center;
     }
 
     .work-top {
@@ -595,7 +635,7 @@
     }
 
     .work-title {
-      font-size: clamp(24px, 3vw, 34px);
+      font-size: clamp(28px, 3vw, 38px);
       line-height: 1.25;
       letter-spacing: -0.04em;
       font-weight: 800;
@@ -625,6 +665,30 @@
       color: rgba(255,255,255,0.88);
       font-size: 13px;
       line-height: 1;
+    }
+
+    .work-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .work-arrow {
+      appearance: none;
+      border: 1px solid rgba(34,34,34,0.08);
+      background: rgba(255,255,255,0.78);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .work-arrow:hover {
+      transform: translateY(-2px);
     }
 
     .cta-box {
@@ -695,19 +759,22 @@
       }
       .banner-content { padding: 24px; }
       .banner-content h3 { font-size: 24px; }
-
-      .work-banner {
-        min-height: 220px;
+      .work-tab-buttons {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
       }
-
+      .work-panel {
+        min-height: 420px;
+      }
       .work-inner {
+        min-height: 420px;
         padding: 24px;
       }
-
       .work-title {
         font-size: 24px;
       }
-
       .work-desc {
         font-size: 14px;
       }
@@ -908,7 +975,6 @@
       </div>
     </section>
 
-    <!-- 주요업무 섹션 수정 -->
     <section class="section" id="work">
       <div class="container">
         <div class="banner-card">
@@ -916,85 +982,91 @@
           <div class="banner-content">
             <span class="banner-chip">SECTION 03</span>
             <h3>주요 업무</h3>
-            <p>DA PARTNERS는 배달앱 운영에 필요한 핵심 업무를 항목별로 체계적으로 관리합니다.</p>
+            <p>배달앱 관리, 메뉴 구성, 디자인 관리, 리뷰 답변 관리까지 버튼을 눌러 항목별로 확인할 수 있습니다.</p>
           </div>
         </div>
 
-        <div class="work-wrap">
-          <div class="work-banner">
-            <img src="work-1.jpg" alt="배달앱 최적화 관리" />
-            <div class="work-inner">
-              <div class="work-top">
-                <span class="work-chip">배달앱 관리</span>
-                <span class="work-no">NO.1</span>
+        <div class="work-tabs">
+          <div class="work-tab-buttons">
+            <button class="work-tab-btn active" data-tab="0">배달앱 관리</button>
+            <button class="work-tab-btn" data-tab="1">메뉴 구성</button>
+            <button class="work-tab-btn" data-tab="2">디자인 관리</button>
+            <button class="work-tab-btn" data-tab="3">리뷰 답변 관리</button>
+          </div>
+
+          <div class="work-panels">
+            <div class="work-panel active">
+              <img src="work-1.jpg" alt="배달앱 최적화 관리" />
+              <div class="work-inner">
+                <div class="work-top">
+                  <span class="work-chip">배달앱 관리</span>
+                  <span class="work-no">NO.1</span>
+                </div>
+                <div class="work-title">배달앱 최적화 관리</div>
+                <p class="work-desc">배달의민족, 요기요, 쿠팡이츠 등 플랫폼별 특성에 맞춰 노출, 구성, 운영 흐름을 최적화합니다.</p>
+                <div class="work-meta">
+                  <span class="work-badge">플랫폼별 운영 및 세팅</span>
+                  <span class="work-badge">노출 최적화 관리</span>
+                  <span class="work-badge">상세 구성 점검</span>
+                </div>
               </div>
-              <div class="work-title">배달앱 최적화 관리</div>
-              <p class="work-desc">
-                배달의민족, 요기요, 쿠팡이츠 등 플랫폼별 특성에 맞춰 노출, 구성, 운영 흐름을 최적화합니다.
-              </p>
-              <div class="work-meta">
-                <span class="work-badge">플랫폼별 운영 및 세팅</span>
-                <span class="work-badge">노출 최적화 관리</span>
-                <span class="work-badge">상세 구성 점검</span>
+            </div>
+
+            <div class="work-panel">
+              <img src="work-2.jpg" alt="메뉴 구성 및 노출 개선" />
+              <div class="work-inner">
+                <div class="work-top">
+                  <span class="work-chip">메뉴 구성</span>
+                  <span class="work-no">NO.2</span>
+                </div>
+                <div class="work-title">메뉴 구성 및 노출 개선</div>
+                <p class="work-desc">고객이 선택하기 쉬운 메뉴 흐름과 노출 전략으로 주문 전환을 높일 수 있는 방향을 제안합니다.</p>
+                <div class="work-meta">
+                  <span class="work-badge">메뉴 구조 컨설팅</span>
+                  <span class="work-badge">썸네일 · 설명 최적화</span>
+                  <span class="work-badge">구매 동선 정리</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-panel">
+              <img src="work-3.jpg" alt="디자인 관리" />
+              <div class="work-inner">
+                <div class="work-top">
+                  <span class="work-chip">디자인 운영</span>
+                  <span class="work-no">NO.3</span>
+                </div>
+                <div class="work-title">디자인 관리</div>
+                <p class="work-desc">배너, 썸네일, 상세 영역 등 고객 접점에 노출되는 디자인 요소를 정리해 전체 완성도를 높입니다.</p>
+                <div class="work-meta">
+                  <span class="work-badge">썸네일 관리</span>
+                  <span class="work-badge">배너/상세 영역 정리</span>
+                  <span class="work-badge">브랜드 톤 유지</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-panel">
+              <img src="work-4.jpg" alt="리뷰 답변 관리" />
+              <div class="work-inner">
+                <div class="work-top">
+                  <span class="work-chip">고객 응대</span>
+                  <span class="work-no">NO.4</span>
+                </div>
+                <div class="work-title">리뷰 답변 관리</div>
+                <p class="work-desc">리뷰 응대와 고객 커뮤니케이션 관리를 통해 매장 신뢰도와 재주문 가능성을 함께 높입니다.</p>
+                <div class="work-meta">
+                  <span class="work-badge">리뷰 응대 관리</span>
+                  <span class="work-badge">고객 커뮤니케이션</span>
+                  <span class="work-badge">브랜드 신뢰도 강화</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="work-banner">
-            <img src="work-2.jpg" alt="메뉴 구성 및 노출 개선" />
-            <div class="work-inner">
-              <div class="work-top">
-                <span class="work-chip">메뉴 구성</span>
-                <span class="work-no">NO.2</span>
-              </div>
-              <div class="work-title">메뉴 구성 및 노출 개선</div>
-              <p class="work-desc">
-                고객이 선택하기 쉬운 메뉴 흐름과 노출 전략으로 주문 전환을 높일 수 있는 방향을 제안합니다.
-              </p>
-              <div class="work-meta">
-                <span class="work-badge">메뉴 구조 컨설팅</span>
-                <span class="work-badge">썸네일 · 설명 최적화</span>
-                <span class="work-badge">구매 동선 정리</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-banner">
-            <img src="work-3.jpg" alt="디자인 관리" />
-            <div class="work-inner">
-              <div class="work-top">
-                <span class="work-chip">디자인 운영</span>
-                <span class="work-no">NO.4</span>
-              </div>
-              <div class="work-title">디자인 관리</div>
-              <p class="work-desc">
-                배너, 썸네일, 상세 영역 등 고객 접점에 노출되는 디자인 요소를 정리해 전체 완성도를 높입니다.
-              </p>
-              <div class="work-meta">
-                <span class="work-badge">썸네일 관리</span>
-                <span class="work-badge">배너/상세 영역 정리</span>
-                <span class="work-badge">브랜드 톤 유지</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-banner">
-            <img src="work-4.jpg" alt="리뷰 답변 관리" />
-            <div class="work-inner">
-              <div class="work-top">
-                <span class="work-chip">고객 응대</span>
-                <span class="work-no">NO.5</span>
-              </div>
-              <div class="work-title">리뷰 답변 관리</div>
-              <p class="work-desc">
-                리뷰 응대와 고객 커뮤니케이션 관리를 통해 매장 신뢰도와 재주문 가능성을 함께 높입니다.
-              </p>
-              <div class="work-meta">
-                <span class="work-badge">리뷰 응대 관리</span>
-                <span class="work-badge">고객 커뮤니케이션</span>
-                <span class="work-badge">브랜드 신뢰도 강화</span>
-              </div>
-            </div>
+          <div class="work-nav">
+            <button class="work-arrow" id="workPrev">← 이전</button>
+            <button class="work-arrow" id="workNext">다음 →</button>
           </div>
         </div>
       </div>
@@ -1021,5 +1093,37 @@
       <div>배달앱 운영 대행 · 플랫폼 최적화 · 통합 플랫폼 관리</div>
     </div>
   </footer>
+
+  <script>
+    const workButtons = document.querySelectorAll('.work-tab-btn');
+    const workPanels = document.querySelectorAll('.work-panel');
+    const prevBtn = document.getElementById('workPrev');
+    const nextBtn = document.getElementById('workNext');
+    let currentWorkIndex = 0;
+
+    function setWorkTab(index) {
+      currentWorkIndex = index;
+      workButtons.forEach((button, i) => {
+        button.classList.toggle('active', i === index);
+      });
+      workPanels.forEach((panel, i) => {
+        panel.classList.toggle('active', i === index);
+      });
+    }
+
+    workButtons.forEach((button, index) => {
+      button.addEventListener('click', () => setWorkTab(index));
+    });
+
+    prevBtn.addEventListener('click', () => {
+      const nextIndex = (currentWorkIndex - 1 + workPanels.length) % workPanels.length;
+      setWorkTab(nextIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const nextIndex = (currentWorkIndex + 1) % workPanels.length;
+      setWorkTab(nextIndex);
+    });
+  </script>
 </body>
 </html>
