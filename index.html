@@ -8,12 +8,14 @@
     :root {
       --bg: #fff9ee;
       --bg2: #fff3cf;
-      --card: rgba(255,255,255,0.88);
+      --card: rgba(255,255,255,0.9);
       --line: rgba(34,34,34,0.08);
       --text: #1f1f1f;
       --muted: #666;
       --point: #d4a62a;
       --point-deep: #b98911;
+      --point-soft: #f3dfaa;
+      --point-soft-2: #fff4d3;
       --dark: #222;
       --shadow: 0 18px 44px rgba(0,0,0,0.08);
       --radius-xl: 34px;
@@ -24,6 +26,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
@@ -276,6 +279,12 @@
       padding: 24px 20px;
       text-align: center;
       box-shadow: 0 10px 22px rgba(0,0,0,0.04);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.08);
     }
 
     .stat b {
@@ -428,12 +437,12 @@
     .platform-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
+      gap: 22px;
       margin-top: 34px;
     }
 
     .platform-card {
-      padding: 30px 24px;
+      padding: 34px 26px;
       border-radius: 24px;
       background: var(--card);
       border: 1px solid var(--line);
@@ -444,26 +453,26 @@
     }
 
     .platform-icon {
-      width: 88px;
-      height: 88px;
-      margin: 0 auto 18px;
+      width: 108px;
+      height: 108px;
+      margin: 0 auto 20px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.96);
+      background: rgba(255,255,255,0.98);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 18px rgba(0,0,0,0.08);
-      transition: transform .25s ease, background .25s ease;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+      transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
     }
 
     .platform-icon img {
-      width: 48px;
-      height: 48px;
+      width: 64px;
+      height: 64px;
       object-fit: contain;
     }
 
     .platform-card h4 {
-      font-size: 20px;
+      font-size: 21px;
       letter-spacing: -0.03em;
       margin-bottom: 10px;
     }
@@ -476,16 +485,17 @@
     }
 
     .platform-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      background: linear-gradient(135deg, var(--point), #f4cb66);
-      border-color: rgba(230,184,69,0.4);
-      box-shadow: 0 18px 36px rgba(230,184,69,0.25);
+      transform: translateY(-8px) scale(1.03);
+      background: linear-gradient(135deg, var(--point-soft-2), #f7e8bf);
+      border-color: rgba(230,184,69,0.35);
+      box-shadow: 0 22px 42px rgba(230,184,69,0.20);
       color: #1b1b1b;
     }
 
     .platform-card:hover .platform-icon {
-      transform: scale(1.08);
-      background: rgba(255,255,255,0.98);
+      transform: scale(1.1);
+      background: #fff;
+      box-shadow: 0 14px 26px rgba(0,0,0,0.10);
     }
 
     .platform-card:hover h4 { color: #1b1b1b; }
@@ -509,16 +519,29 @@
       border-radius: 34px;
       overflow: hidden;
       box-shadow: 0 24px 54px rgba(0,0,0,0.10);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease, background .28s ease;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .compare-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 60px rgba(0,0,0,0.14);
     }
 
     .compare-card-gray {
-      background: #dcdcdc;
-      border: 1px solid rgba(0,0,0,0.06);
+      background: #dddddd;
+    }
+
+    .compare-card-gray:hover {
+      background: #e6e6e6;
     }
 
     .compare-card-point {
-      background: #d90000;
-      border: 1px solid rgba(0,0,0,0.06);
+      background: linear-gradient(180deg, #e7c96d 0%, #d9ab33 100%);
+    }
+
+    .compare-card-point:hover {
+      background: linear-gradient(180deg, #edd58a 0%, #dfb548 100%);
     }
 
     .compare-title {
@@ -534,13 +557,12 @@
     }
 
     .compare-card-point .compare-title {
-      color: #fff;
+      color: #fffdf7;
     }
 
     .compare-list {
-      background: rgba(255,255,255,0.96);
+      background: rgba(255,255,255,0.97);
       margin: 0 26px 26px;
-      border-radius: 0;
       overflow: hidden;
     }
 
@@ -556,15 +578,24 @@
       color: #444;
       border-bottom: 1px solid rgba(0,0,0,0.07);
       word-break: keep-all;
+      transition: background .25s ease, color .25s ease;
     }
 
     .compare-item:last-child {
       border-bottom: 0;
     }
 
+    .compare-card-gray:hover .compare-item {
+      background: rgba(255,255,255,0.99);
+    }
+
     .compare-card-point .compare-item {
       font-weight: 700;
       color: #383838;
+    }
+
+    .compare-card-point:hover .compare-item {
+      background: #fffaf0;
     }
 
     .compare-vs {
@@ -824,7 +855,6 @@
         grid-template-columns: 1fr;
       }
 
-      .split-grid { grid-template-columns: 1fr; }
       .platform-grid { grid-template-columns: repeat(2, 1fr); }
       .flow-grid { grid-template-columns: 1fr; }
 
@@ -887,6 +917,16 @@
 
       .banner-content { padding: 26px; }
       .banner-content h3 { font-size: 26px; }
+
+      .platform-icon {
+        width: 96px;
+        height: 96px;
+      }
+
+      .platform-icon img {
+        width: 58px;
+        height: 58px;
+      }
 
       .compare-title {
         font-size: 26px;
@@ -1118,7 +1158,7 @@
           <div class="compare-vs">VS</div>
 
           <div class="compare-card compare-card-point">
-            <div class="compare-title">엘제이컴퍼니</div>
+            <div class="compare-title">DA PARTNERS</div>
             <div class="compare-list">
               <div class="compare-item">7년간 수많은 클라이언트의 업무를 맡은 경험이 있는 업체</div>
               <div class="compare-item">숙련된 노하우를 가진 요식업 전문 직원들과 항시 소통하는 업체</div>
@@ -1258,7 +1298,7 @@
 
     let currentWorkIndex = 0;
     let autoSlideInterval = null;
-    const AUTO_SLIDE_MS = 4000;
+    const AUTO_SLIDE_MS = 2200;
 
     function setWorkTab(index) {
       currentWorkIndex = index;
