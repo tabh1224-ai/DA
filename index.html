@@ -12,8 +12,8 @@
       --line: rgba(34,34,34,0.08);
       --text: #1f1f1f;
       --muted: #666;
-      --point: #e6b845;
-      --point-deep: #bb880f;
+      --point: #d4a62a;
+      --point-deep: #b98911;
       --dark: #222;
       --shadow: 0 18px 44px rgba(0,0,0,0.08);
       --radius-xl: 34px;
@@ -63,10 +63,11 @@
     h1,h2,h3,h4,p,ul,li { margin: 0; padding: 0; }
 
     h1 {
-      font-size: clamp(38px, 5.5vw, 68px);
+      font-size: clamp(40px, 5.8vw, 72px);
       line-height: 1.12;
-      letter-spacing: -0.05em;
-      margin-bottom: 20px;
+      letter-spacing: -0.055em;
+      margin-bottom: 22px;
+      font-weight: 800;
     }
 
     h2 {
@@ -98,7 +99,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 32px;
+      margin-top: 34px;
     }
 
     .btn {
@@ -117,15 +118,16 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--point), #f4cb66);
+      background: linear-gradient(135deg, var(--point), #efc452);
       color: #1b1b1b;
-      box-shadow: 0 12px 26px rgba(230,184,69,0.24);
+      box-shadow: 0 12px 26px rgba(212,166,42,0.24);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.78);
       border-color: rgba(34,34,34,0.1);
       backdrop-filter: blur(10px);
+      color: #1f1f1f;
     }
 
     .btn:hover { transform: translateY(-2px); }
@@ -134,7 +136,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 250, 239, 0.8);
+      background: rgba(255, 248, 233, 0.86);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(34,34,34,0.05);
     }
@@ -175,60 +177,179 @@
       font-weight: 600;
     }
 
+    /* HERO */
     .hero {
-      padding: 72px 0 90px;
+      position: relative;
+      overflow: hidden;
+      padding: 42px 0 120px;
+      background:
+        linear-gradient(90deg, rgba(252,248,238,0.96) 0%, rgba(248,241,222,0.90) 42%, rgba(241,222,170,0.42) 100%),
+        url("hero-bg.jpg") center center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 30%, rgba(255,255,255,0.38), transparent 24%),
+        radial-gradient(circle at 90% 20%, rgba(212,166,42,0.14), transparent 22%);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: -6%;
+      right: -6%;
+      bottom: -120px;
+      height: 240px;
+      background: #fbf6ea;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      z-index: 1;
     }
 
     .hero-grid {
+      position: relative;
+      z-index: 2;
       display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 36px;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
       align-items: center;
+      min-height: 620px;
     }
 
     .hero-copy-wrap {
       position: relative;
-      overflow: hidden;
-      padding: 54px;
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.84), rgba(255,252,244,0.62)),
-        linear-gradient(135deg, rgba(255,244,207,0.92), rgba(255,249,234,0.88));
-      border: 1px solid rgba(34,34,34,0.06);
-      box-shadow: var(--shadow);
+      padding: 20px 0 20px;
     }
 
-    .hero-copy-wrap::before,
-    .hero-copy-wrap::after {
-      content: "";
+    .hero-copy {
+      max-width: 560px;
+    }
+
+    .hero-copy h1 strong {
+      color: var(--point-deep);
+      font-weight: 800;
+    }
+
+    .hero-copy .lead {
+      max-width: 500px;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .hero-subtext {
+      margin-top: 28px;
+      max-width: 470px;
+      font-size: 15px;
+      color: #6f6a5e;
+      line-height: 1.9;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 620px;
+      overflow: visible;
+    }
+
+    .hero-image-wrap {
       position: absolute;
-      border-radius: 50%;
-      background: rgba(230,184,69,0.1);
-      z-index: 0;
+      right: 0;
+      bottom: -26px;
+      width: min(100%, 670px);
     }
 
-    .hero-copy-wrap::before {
-      width: 280px;
-      height: 280px;
-      top: -110px;
-      right: -100px;
+    .hero-image-main {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 50px rgba(0,0,0,0.16));
     }
 
-    .hero-copy-wrap::after {
-      width: 180px;
-      height: 180px;
-      bottom: -60px;
-      left: -60px;
+    .hero-phone {
+      position: absolute;
+      bottom: 12px;
+      width: 200px;
+      border-radius: 28px;
+      box-shadow: 0 30px 45px rgba(0,0,0,0.22);
+      background: #fff;
+      border: 8px solid #1f1f1f;
     }
 
-    .hero-copy { position: relative; z-index: 1; }
-    .hero-copy strong { color: var(--point-deep); }
+    .hero-phone.left {
+      left: 130px;
+      transform: rotate(-12deg);
+      z-index: 3;
+    }
+
+    .hero-phone.right {
+      right: 48px;
+      transform: rotate(12deg);
+      z-index: 2;
+    }
+
+    .hero-phone-screen {
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+      padding: 14px 12px;
+      min-height: 340px;
+    }
+
+    .hero-phone-top {
+      height: 18px;
+      width: 72px;
+      border-radius: 999px;
+      background: #2b2b2b;
+      margin: 0 auto 14px;
+    }
+
+    .hero-phone-card {
+      background: #faf7ef;
+      border-radius: 16px;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .hero-phone-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #d6a629, #f2cc66);
+      margin-bottom: 8px;
+    }
+
+    .hero-phone-line {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.08);
+      margin-bottom: 7px;
+    }
+
+    .hero-phone-line.short { width: 62%; }
+    .hero-phone-line.mid { width: 78%; }
+    .hero-phone-line.long { width: 100%; }
+
+    .hero-phone-chart {
+      height: 88px;
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg, rgba(212,166,42,0.15), rgba(212,166,42,0.02)),
+        repeating-linear-gradient(
+          to right,
+          rgba(212,166,42,0.8) 0 10px,
+          transparent 10px 24px
+        );
+      margin-top: 10px;
+    }
 
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      margin-top: 28px;
+      margin-top: 30px;
+      max-width: 560px;
     }
 
     .stat {
@@ -237,6 +358,7 @@
       border-radius: 18px;
       padding: 18px;
       text-align: center;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.04);
     }
 
     .stat b {
@@ -249,53 +371,6 @@
     .stat span {
       font-size: 13px;
       color: var(--muted);
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 560px;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(34,34,34,0.05);
-      background: #f7edcf;
-    }
-
-    .hero-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(15,15,15,0.1) 0%, rgba(15,15,15,0.55) 100%);
-    }
-
-    .hero-badge {
-      position: absolute;
-      left: 26px;
-      bottom: 26px;
-      right: 26px;
-      padding: 20px 22px;
-      border-radius: 20px;
-      background: rgba(20,20,20,0.72);
-      color: #fff;
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-badge strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 6px;
-      letter-spacing: -0.03em;
-    }
-
-    .hero-badge p {
-      color: rgba(255,255,255,0.8);
-      font-size: 14px;
-      line-height: 1.65;
     }
 
     .banner-card {
@@ -833,43 +908,138 @@
       .split-grid { grid-template-columns: 1fr; }
       .platform-grid { grid-template-columns: repeat(2, 1fr); }
       .flow-grid { grid-template-columns: 1fr; }
-      .hero-visual { min-height: 440px; }
+
+      .hero {
+        padding: 30px 0 80px;
+      }
+
+      .hero-grid {
+        min-height: auto;
+        gap: 20px;
+      }
+
+      .hero-copy {
+        max-width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 540px;
+      }
+
+      .hero-image-wrap {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .hero-phone.left {
+        left: 80px;
+      }
+
+      .hero-phone.right {
+        right: 30px;
+      }
     }
 
     @media (max-width: 768px) {
       .section { padding: 80px 0; }
       .nav { height: 72px; }
       .nav-links { display: none; }
+
+      .hero {
+        padding: 20px 0 70px;
+      }
+
+      .hero::after {
+        height: 130px;
+        bottom: -65px;
+      }
+
       .hero-copy-wrap,
       .service-box,
       .info-card,
       .cta-box { padding: 28px; }
+
       .hero-stats,
       .platform-grid { grid-template-columns: 1fr; }
+
       .btn-wrap { flex-direction: column; }
       .btn { width: 100%; }
+
+      .hero-visual {
+        min-height: 420px;
+      }
+
+      .hero-image-wrap {
+        width: 100%;
+      }
+
+      .hero-phone {
+        width: 130px;
+        border-radius: 20px;
+        border-width: 6px;
+      }
+
+      .hero-phone-screen {
+        min-height: 220px;
+        padding: 10px 9px;
+      }
+
+      .hero-phone-top {
+        width: 50px;
+        height: 12px;
+        margin-bottom: 10px;
+      }
+
+      .hero-phone-card {
+        padding: 8px;
+        border-radius: 10px;
+      }
+
+      .hero-phone-chart {
+        height: 52px;
+      }
+
+      .hero-phone.left {
+        left: 20px;
+        bottom: 10px;
+      }
+
+      .hero-phone.right {
+        right: 12px;
+        bottom: 16px;
+      }
+
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .banner-content { padding: 24px; }
       .banner-content h3 { font-size: 24px; }
+
       .work-tab-buttons {
         justify-content: flex-start;
         overflow-x: auto;
         flex-wrap: nowrap;
         padding-bottom: 6px;
       }
+
       .work-panel {
         min-height: 420px;
       }
+
       .work-inner {
         min-height: 420px;
         padding: 24px;
       }
+
       .work-title {
         font-size: 24px;
       }
+
       .work-desc {
         font-size: 14px;
       }
@@ -884,12 +1054,13 @@
         <span>DA PARTNERS</span>
       </a>
       <nav class="nav-links">
-        <a href="#intro">소개</a>
-        <a href="#service">서비스</a>
-        <a href="#platform">플랫폼</a>
-        <a href="#strength">강점</a>
-        <a href="#contact">문의</a>
+        <a href="#intro">서비스 소개</a>
+        <a href="#work">주요 업무</a>
+        <a href="#platform">이용 플랫폼</a>
+        <a href="#strength">성공 사례</a>
+        <a href="#contact">문의하기</a>
       </nav>
+      <a href="#contact" class="btn btn-primary" style="min-width: 140px; height: 46px; font-size: 14px;">상담 문의하기</a>
     </div>
   </header>
 
@@ -898,16 +1069,25 @@
       <div class="container hero-grid">
         <div class="hero-copy-wrap">
           <div class="hero-copy">
-            <div class="eyebrow">배달앱 운영 대행 · 플랫폼 최적화 · 통합 관리</div>
-            <h1>사장님은 조리에만 집중하세요.<br><strong>배달앱 성장은 DA PARTNERS</strong>가 책임집니다.</h1>
+            <h1>
+              사장님은<br>
+              <strong>조리에만</strong> 집중하세요
+            </h1>
+
             <p class="lead">
-              매장 상황에 맞춘 배달앱 운영 전략부터 플랫폼별 최적화 관리까지.<br>
-              DA PARTNERS는 실무 중심의 운영 솔루션으로 안정적인 성장을 돕습니다.
+              배달앱 성장은 <strong style="color: var(--point-deep);">DA PARTNERS</strong>가 책임집니다.
             </p>
+
+            <p class="hero-subtext">
+              배달앱 운영부터 광고 관리, 플랫폼 최적화까지<br>
+              매장 성장에 필요한 모든 운영을 대신해 드립니다.
+            </p>
+
             <div class="btn-wrap">
-              <a href="#contact" class="btn btn-primary">상담 문의하기</a>
-              <a href="#service" class="btn btn-secondary">서비스 보기</a>
+              <a href="#contact" class="btn btn-primary">무료 상담 신청</a>
+              <a href="#work" class="btn btn-secondary">주요 업무 보기</a>
             </div>
+
             <div class="hero-stats">
               <div class="stat">
                 <b>맞춤 운영</b>
@@ -926,11 +1106,45 @@
         </div>
 
         <div class="hero-visual">
-          <img src="hero-image.jpg" alt="DA PARTNERS 메인 이미지" />
-          <div class="hero-overlay"></div>
-          <div class="hero-badge">
-            <strong>배달앱 운영의 시작은 결국 구조와 관리입니다</strong>
-            <p>감으로 운영하는 것이 아니라, 실제 매장 상황에 맞춘 전략과 실행으로 효율적인 배달앱 운영 환경을 만듭니다.</p>
+          <div class="hero-image-wrap">
+            <img src="owner.png" alt="매장 운영 대표 이미지" class="hero-image-main" />
+
+            <div class="hero-phone left">
+              <div class="hero-phone-screen">
+                <div class="hero-phone-top"></div>
+                <div class="hero-phone-card">
+                  <div class="hero-phone-bar"></div>
+                  <div class="hero-phone-line long"></div>
+                  <div class="hero-phone-line mid"></div>
+                  <div class="hero-phone-line short"></div>
+                  <div class="hero-phone-chart"></div>
+                </div>
+                <div class="hero-phone-card">
+                  <div class="hero-phone-line long"></div>
+                  <div class="hero-phone-line short"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-phone right">
+              <div class="hero-phone-screen">
+                <div class="hero-phone-top"></div>
+                <div class="hero-phone-card">
+                  <div class="hero-phone-bar"></div>
+                  <div class="hero-phone-line long"></div>
+                  <div class="hero-phone-line mid"></div>
+                </div>
+                <div class="hero-phone-card">
+                  <div class="hero-phone-line long"></div>
+                  <div class="hero-phone-line mid"></div>
+                  <div class="hero-phone-line short"></div>
+                </div>
+                <div class="hero-phone-card">
+                  <div class="hero-phone-line long"></div>
+                  <div class="hero-phone-line short"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -954,7 +1168,7 @@
         <div class="section-head">
           <div class="eyebrow">사장님 이제 아직도 그냥 운영만 하시나요?</div>
           <h2>매장에 맞춘 운영 구조가 있어야<br>주문도, 효율도 함께 올라갑니다</h2>
-          <p class="lead">손메모에서 잡아주신 3단 구조 그대로 반영한 서비스 흐름입니다.</p>
+          <p class="lead">매장 상황에 맞는 배달앱 운영 흐름을 기준으로 구성한 서비스입니다.</p>
         </div>
 
         <div class="service-box">
@@ -983,7 +1197,7 @@
           <div class="banner-content">
             <span class="banner-chip">SECTION 02</span>
             <h3>유일무이, 모든 플랫폼 관리</h3>
-            <p>손메모 요청대로 네이버보다 당근을 강조하는 방향으로 수정 가능하며, 현재는 전체 플랫폼 운영 구조 소개 섹션으로 구성했습니다.</p>
+            <p>배달의민족, 요기요, 쿠팡이츠, 당근까지 여러 채널을 하나의 흐름으로 연결해 관리 효율을 높입니다.</p>
           </div>
         </div>
 
@@ -1057,7 +1271,7 @@
         <div class="info-card info-light">
           <div class="eyebrow">DA PARTNERS 강점</div>
           <h2>운영은 더 단단하게,<br>성장은 더 체계적으로</h2>
-          <p class="lead">손메모 4번의 강점 섹션 방향에 맞춰, 퍼센트 중심이 아닌 신뢰형 문구로 정리했습니다.</p>
+          <p class="lead">퍼센트 수치보다 실제 운영 신뢰를 중심으로 정리한 강점 섹션입니다.</p>
           <div class="bullet-list">
             <div class="bullet-item">
               <span class="num">1</span>
@@ -1144,7 +1358,7 @@
               <div class="work-inner">
                 <div class="work-top">
                   <span class="work-chip">디자인 운영</span>
-                  <span class="work-no">NO.4</span>
+                  <span class="work-no">NO.3</span>
                 </div>
                 <div class="work-title">디자인 관리</div>
                 <p class="work-desc">배너, 썸네일, 상세 영역 등 고객 접점에 노출되는 디자인 요소를 정리해 전체 완성도를 높입니다.</p>
@@ -1161,7 +1375,7 @@
               <div class="work-inner">
                 <div class="work-top">
                   <span class="work-chip">고객 응대</span>
-                  <span class="work-no">NO.5</span>
+                  <span class="work-no">NO.4</span>
                 </div>
                 <div class="work-title">리뷰 답변 관리</div>
                 <p class="work-desc">리뷰 응대와 고객 커뮤니케이션 관리를 통해 매장 신뢰도와 재주문 가능성을 함께 높입니다.</p>
