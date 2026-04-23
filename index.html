@@ -183,8 +183,9 @@
       overflow: hidden;
       padding: 42px 0 120px;
       background:
-        linear-gradient(90deg, rgba(252,248,238,0.96) 0%, rgba(248,241,222,0.90) 42%, rgba(241,222,170,0.42) 100%),
-        url("hero-bg.jpg") center center / cover no-repeat;
+        linear-gradient(90deg, rgba(252,248,238,0.96) 0%, rgba(248,241,222,0.90) 36%, rgba(244,234,205,0.62) 54%, rgba(238,225,184,0.28) 100%),
+        url("hero-bg.jpg") 72% top / cover no-repeat;
+      background-color: #f8f2e6;
     }
 
     .hero::before {
@@ -192,8 +193,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 15% 30%, rgba(255,255,255,0.38), transparent 24%),
-        radial-gradient(circle at 90% 20%, rgba(212,166,42,0.14), transparent 22%);
+        radial-gradient(circle at 15% 30%, rgba(255,255,255,0.34), transparent 24%),
+        radial-gradient(circle at 88% 18%, rgba(212,166,42,0.10), transparent 22%);
       z-index: 0;
     }
 
@@ -213,7 +214,7 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 24px;
       align-items: center;
       min-height: 620px;
@@ -221,7 +222,7 @@
 
     .hero-copy-wrap {
       position: relative;
-      padding: 20px 0 20px;
+      padding: 20px 0;
     }
 
     .hero-copy {
@@ -247,101 +248,8 @@
       line-height: 1.9;
     }
 
-    .hero-visual {
-      position: relative;
+    .hero-spacer {
       min-height: 620px;
-      overflow: visible;
-    }
-
-    .hero-image-wrap {
-      position: absolute;
-      right: 0;
-      bottom: -26px;
-      width: min(100%, 670px);
-    }
-
-    .hero-image-main {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 30px 50px rgba(0,0,0,0.16));
-    }
-
-    .hero-phone {
-      position: absolute;
-      bottom: 12px;
-      width: 200px;
-      border-radius: 28px;
-      box-shadow: 0 30px 45px rgba(0,0,0,0.22);
-      background: #fff;
-      border: 8px solid #1f1f1f;
-    }
-
-    .hero-phone.left {
-      left: 130px;
-      transform: rotate(-12deg);
-      z-index: 3;
-    }
-
-    .hero-phone.right {
-      right: 48px;
-      transform: rotate(12deg);
-      z-index: 2;
-    }
-
-    .hero-phone-screen {
-      border-radius: 20px;
-      overflow: hidden;
-      background: linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
-      padding: 14px 12px;
-      min-height: 340px;
-    }
-
-    .hero-phone-top {
-      height: 18px;
-      width: 72px;
-      border-radius: 999px;
-      background: #2b2b2b;
-      margin: 0 auto 14px;
-    }
-
-    .hero-phone-card {
-      background: #faf7ef;
-      border-radius: 16px;
-      padding: 12px;
-      margin-bottom: 10px;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .hero-phone-bar {
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #d6a629, #f2cc66);
-      margin-bottom: 8px;
-    }
-
-    .hero-phone-line {
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.08);
-      margin-bottom: 7px;
-    }
-
-    .hero-phone-line.short { width: 62%; }
-    .hero-phone-line.mid { width: 78%; }
-    .hero-phone-line.long { width: 100%; }
-
-    .hero-phone-chart {
-      height: 88px;
-      border-radius: 14px;
-      background:
-        linear-gradient(180deg, rgba(212,166,42,0.15), rgba(212,166,42,0.02)),
-        repeating-linear-gradient(
-          to right,
-          rgba(212,166,42,0.8) 0 10px,
-          transparent 10px 24px
-        );
-      margin-top: 10px;
     }
 
     .hero-stats {
@@ -906,11 +814,15 @@
     @media (max-width: 1100px) {
       .hero-grid,
       .split-grid { grid-template-columns: 1fr; }
+
       .platform-grid { grid-template-columns: repeat(2, 1fr); }
       .flow-grid { grid-template-columns: 1fr; }
 
       .hero {
         padding: 30px 0 80px;
+        background:
+          linear-gradient(180deg, rgba(252,248,238,0.94) 0%, rgba(248,241,222,0.88) 42%, rgba(244,234,205,0.50) 100%),
+          url("hero-bg.jpg") 66% top / cover no-repeat;
       }
 
       .hero-grid {
@@ -922,24 +834,8 @@
         max-width: 100%;
       }
 
-      .hero-visual {
-        min-height: 540px;
-      }
-
-      .hero-image-wrap {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .hero-phone.left {
-        left: 80px;
-      }
-
-      .hero-phone.right {
-        right: 30px;
+      .hero-spacer {
+        display: none;
       }
     }
 
@@ -949,7 +845,10 @@
       .nav-links { display: none; }
 
       .hero {
-        padding: 20px 0 70px;
+        padding: 24px 0 70px;
+        background:
+          linear-gradient(180deg, rgba(252,248,238,0.96) 0%, rgba(248,241,222,0.90) 52%, rgba(244,234,205,0.56) 100%),
+          url("hero-bg.jpg") 62% top / cover no-repeat;
       }
 
       .hero::after {
@@ -967,50 +866,6 @@
 
       .btn-wrap { flex-direction: column; }
       .btn { width: 100%; }
-
-      .hero-visual {
-        min-height: 420px;
-      }
-
-      .hero-image-wrap {
-        width: 100%;
-      }
-
-      .hero-phone {
-        width: 130px;
-        border-radius: 20px;
-        border-width: 6px;
-      }
-
-      .hero-phone-screen {
-        min-height: 220px;
-        padding: 10px 9px;
-      }
-
-      .hero-phone-top {
-        width: 50px;
-        height: 12px;
-        margin-bottom: 10px;
-      }
-
-      .hero-phone-card {
-        padding: 8px;
-        border-radius: 10px;
-      }
-
-      .hero-phone-chart {
-        height: 52px;
-      }
-
-      .hero-phone.left {
-        left: 20px;
-        bottom: 10px;
-      }
-
-      .hero-phone.right {
-        right: 12px;
-        bottom: 16px;
-      }
 
       .footer-inner {
         flex-direction: column;
@@ -1105,47 +960,7 @@
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="hero-image-wrap">
-
-            <div class="hero-phone left">
-              <div class="hero-phone-screen">
-                <div class="hero-phone-top"></div>
-                <div class="hero-phone-card">
-                  <div class="hero-phone-bar"></div>
-                  <div class="hero-phone-line long"></div>
-                  <div class="hero-phone-line mid"></div>
-                  <div class="hero-phone-line short"></div>
-                  <div class="hero-phone-chart"></div>
-                </div>
-                <div class="hero-phone-card">
-                  <div class="hero-phone-line long"></div>
-                  <div class="hero-phone-line short"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="hero-phone right">
-              <div class="hero-phone-screen">
-                <div class="hero-phone-top"></div>
-                <div class="hero-phone-card">
-                  <div class="hero-phone-bar"></div>
-                  <div class="hero-phone-line long"></div>
-                  <div class="hero-phone-line mid"></div>
-                </div>
-                <div class="hero-phone-card">
-                  <div class="hero-phone-line long"></div>
-                  <div class="hero-phone-line mid"></div>
-                  <div class="hero-phone-line short"></div>
-                </div>
-                <div class="hero-phone-card">
-                  <div class="hero-phone-line long"></div>
-                  <div class="hero-phone-line short"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="hero-spacer"></div>
       </div>
     </section>
 
