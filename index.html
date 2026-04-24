@@ -189,7 +189,6 @@
       font-weight: 600;
     }
 
-    /* HERO */
     .hero {
       position: relative;
       overflow: hidden;
@@ -299,7 +298,6 @@
       color: var(--muted);
     }
 
-    /* COMMON BANNERS */
     .banner-card {
       position: relative;
       overflow: hidden;
@@ -362,7 +360,6 @@
       line-height: 1.85;
     }
 
-    /* SERVICE */
     .service-box {
       position: relative;
       padding: 48px;
@@ -433,7 +430,186 @@
       line-height: 1.85;
     }
 
-    /* PLATFORM */
+    /* STEP */
+    .step-wrap {
+      position: relative;
+      padding: 56px 38px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(34,34,34,0.06);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .step-wrap::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 158px;
+      height: 2px;
+      background: repeating-linear-gradient(
+        to right,
+        rgba(120,120,120,0.34) 0,
+        rgba(120,120,120,0.34) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+      z-index: 0;
+    }
+
+    .step-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 38px;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 8px 10px 0;
+    }
+
+    .step-no {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.10);
+    }
+
+    .step-card:nth-child(1) .step-no { background: linear-gradient(135deg, #f0a43a, #ffc25d); }
+    .step-card:nth-child(2) .step-no { background: linear-gradient(135deg, #4e86e8, #7aadff); }
+    .step-card:nth-child(3) .step-no { background: linear-gradient(135deg, #21b6d7, #67d7ee); }
+    .step-card:nth-child(4) .step-no { background: linear-gradient(135deg, #f36d9c, #ffb05b); }
+
+    .step-card h4 {
+      font-size: 21px;
+      margin-bottom: 12px;
+      word-break: keep-all;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+      word-break: keep-all;
+    }
+
+    /* CONTRACT */
+    .contract-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 36px;
+      background: linear-gradient(135deg, #211f1b 0%, #363127 100%);
+      padding: 56px;
+      box-shadow: 0 28px 64px rgba(0,0,0,0.16);
+      color: #fff;
+    }
+
+    .contract-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.72), rgba(0,0,0,0.36)),
+        url("contract-bg.jpg") center / cover no-repeat;
+      opacity: 0.48;
+      z-index: 0;
+    }
+
+    .contract-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contract-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .contract-head h2 {
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .contract-head h2 strong {
+      color: #f4cb66;
+    }
+
+    .contract-head p {
+      color: rgba(255,255,255,0.78);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .contract-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .contract-card {
+      position: relative;
+      min-height: 160px;
+      padding: 26px 18px 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffd75b 0%, #f0b916 100%);
+      color: #1d1d1d;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.16);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .contract-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 22px 38px rgba(0,0,0,0.22);
+    }
+
+    .contract-num {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.44);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .contract-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+
+    .contract-card h4 {
+      font-size: 19px;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+    }
+
+    .contract-card p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(29,29,29,0.78);
+      word-break: keep-all;
+    }
+
     .platform-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -501,7 +677,6 @@
     .platform-card:hover h4 { color: #1b1b1b; }
     .platform-card:hover p { color: rgba(27,27,27,0.8); }
 
-    /* COMPARE */
     .compare-section {
       position: relative;
     }
@@ -617,7 +792,6 @@
       z-index: 2;
     }
 
-    /* WORK */
     .work-tabs {
       margin-top: 34px;
     }
@@ -798,7 +972,6 @@
       transform: translateY(-2px);
     }
 
-    /* CTA */
     .cta-box {
       position: relative;
       overflow: hidden;
@@ -847,6 +1020,10 @@
       .platform-grid {
         grid-template-columns: repeat(3, 1fr);
       }
+
+      .contract-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 1100px) {
@@ -883,6 +1060,14 @@
         transform: none;
         margin: 0 auto;
       }
+
+      .step-wrap::before {
+        display: none;
+      }
+
+      .step-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
@@ -907,10 +1092,14 @@
       }
 
       .service-box,
-      .cta-box { padding: 30px; }
+      .cta-box,
+      .contract-box,
+      .step-wrap { padding: 30px; }
 
       .hero-stats,
-      .platform-grid { grid-template-columns: 1fr; }
+      .platform-grid,
+      .step-grid,
+      .contract-grid { grid-template-columns: 1fr; }
 
       .btn-wrap { flex-direction: column; }
       .btn { width: 100%; }
@@ -1080,6 +1269,45 @@
       </div>
     </section>
 
+    <!-- 추가: STEP 섹션 / 고객 요청대로 4번 삭제 -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">DA PARTNERS PROCESS</div>
+          <h2>DA PARTNERS만의 체계적인 진행 과정</h2>
+          <p class="lead">상담부터 세팅, 최적화까지 매장 상황에 맞춰 체계적으로 진행합니다.</p>
+        </div>
+
+        <div class="step-wrap">
+          <div class="step-grid">
+            <div class="step-card">
+              <div class="step-no">01</div>
+              <h4>현황 분석<br>및 진단</h4>
+              <p>매장 운영 상태와 배달앱 구성을 점검해 개선 방향을 도출합니다.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-no">02</div>
+              <h4>전략 수립<br>및 가이드 제시</h4>
+              <p>분석 결과를 바탕으로 매장에 맞는 운영 전략과 관리 방향을 제안합니다.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-no">03</div>
+              <h4>세팅 및 콘텐츠<br>최적화 진행</h4>
+              <p>메뉴 구성, 이미지, 상세페이지, 키워드 등 필요한 요소를 정리합니다.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-no">05</div>
+              <h4>최적화 및<br>성과 개선</h4>
+              <p>운영 결과를 바탕으로 문제점을 개선하고 지속적인 성장 방향을 잡습니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="platform">
       <div class="container">
         <div class="banner-card">
@@ -1130,6 +1358,79 @@
             </div>
             <h4>땡겨요</h4>
             <p>추가 채널 운영 구조를 함께 정리해 주문 접점을 넓히고 운영 효율을 높일 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 추가: CONTRACT 섹션 -->
+    <section class="section" id="contract">
+      <div class="container">
+        <div class="contract-box">
+          <div class="contract-content">
+            <div class="contract-head">
+              <div class="eyebrow" style="background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.14); color: #f2cb69;">ONE-STOP SOLUTION</div>
+              <h2>DA PARTNERS <strong>CONTRACT</strong></h2>
+              <p>사장님의 운영 부담을 줄이고, 매출에만 집중할 수 있도록 DA PARTNERS가 필요한 운영 항목을 함께 관리합니다.</p>
+            </div>
+
+            <div class="contract-grid">
+              <div class="contract-card">
+                <div class="contract-num">01</div>
+                <div class="contract-icon">👑</div>
+                <h4>노출/광고 최적화</h4>
+                <p>상위 노출을 위한 검색 광고 최적화 진행</p>
+              </div>
+
+              <div class="contract-card">
+                <div class="contract-num">02</div>
+                <div class="contract-icon">🎯</div>
+                <h4>상권/경쟁사 분석</h4>
+                <p>상권 및 경쟁사 분석을 통한 전략적 포지셔닝</p>
+              </div>
+
+              <div class="contract-card">
+                <div class="contract-num">03</div>
+                <div class="contract-icon">🛒</div>
+                <h4>구성/메뉴 컨설팅</h4>
+                <p>매출을 높이는 최적의 메뉴 구성 컨설팅</p>
+              </div>
+
+              <div class="contract-card">
+                <div class="contract-num">04</div>
+                <div class="contract-icon">📸</div>
+                <h4>사진/상세 페이지</h4>
+                <p>고객이 구매하고 싶어지는 사진 및 상세페이지 제작</p>
+              </div>
+
+              <div class="contract-card">
+                <div class="contract-num">05</div>
+                <div class="contract-icon">⭐</div>
+                <h4>리뷰 관리/마케팅</h4>
+                <p>리뷰 관리 및 마케팅을 통한 신뢰도와 매출 향상</p>
+              </div>
+
+              <div class="contract-card">
+                <div class="contract-num">06</div>
+                <div class="contract-icon">📝</div>
+                <h4>키워드 관리</h4>
+                <p>검색 상위 노출을 위한 키워드 세팅 및 관리</p>
+              </div>
+
+              <div class="contract-card">
+                <div class="contract-num">07</div>
+                <div class="contract-icon">📣</div>
+                <h4>광고 운영 관리</h4>
+                <p>효율적인 광고 운영 및 예산 최적화 관리</p>
+              </div>
+
+              <div class="contract-card">
+                <div class="contract-num">08</div>
+                <div class="contract-icon">📈</div>
+                <h4>데이터 분석</h4>
+                <p>데이터 기반 분석으로 성과 및 인사이트 제공</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
