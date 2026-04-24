@@ -1174,23 +1174,14 @@
       .step-wrap { padding: 30px; }
 
       .hero-stats,
-      .flow-grid,
       .platform-grid,
       .step-grid,
       .contract-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
+        grid-template-columns: 1fr;
       }
 
-      .hero-stats .stat:last-child {
-        grid-column: 1 / -1;
-      }
-
-      .platform-card,
-      .flow-card,
-      .contract-card,
-      .step-card {
-        min-width: 0;
+      .flow-grid {
+        grid-template-columns: 1fr;
       }
 
       .btn-wrap { flex-direction: column; }
@@ -1279,16 +1270,14 @@
       h1 { font-size: 32px; line-height: 1.18; }
       h2 { font-size: 24px; line-height: 1.3; }
 
-      .hero-stats,
-      .flow-grid,
+      .contract-grid,
       .platform-grid,
       .step-grid,
-      .contract-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
+      .flow-grid,
+      .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
-
-      .hero-stats .stat:last-child { grid-column: 1 / -1; }
 
       .service-box,
       .step-wrap,
@@ -1336,56 +1325,6 @@
     }
 
 
-    /* MOBILE SAFE AUTO SLIDER - FADE TYPE / NO CROP */
-    @media (max-width: 768px) {
-      .hero-stats,
-      .flow-grid,
-      .step-grid,
-      .platform-grid,
-      .contract-grid {
-        display: block !important;
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        max-width: 100%;
-        transform: none !important;
-      }
-
-      .hero-stats > *,
-      .flow-grid > *,
-      .step-grid > *,
-      .platform-grid > *,
-      .contract-grid > * {
-        display: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        animation: mobileFadeSlide .45s ease;
-      }
-
-      .hero-stats > *.is-active,
-      .flow-grid > *.is-active,
-      .step-grid > *.is-active,
-      .platform-grid > *.is-active,
-      .contract-grid > *.is-active {
-        display: block !important;
-      }
-
-      .hero-stats .stat:last-child {
-        grid-column: auto !important;
-      }
-
-      @keyframes mobileFadeSlide {
-        from {
-          opacity: 0;
-          transform: translateX(18px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-    }
   </style>
 </head>
 <body>
@@ -1525,7 +1464,7 @@
             </div>
 
             <div class="step-card">
-              <div class="step-no">04</div>
+              <div class="step-no">05</div>
               <h4>최적화 및<br>성과 개선</h4>
               <p>운영 결과를 바탕으로 문제점을 개선하고 지속적인 성장 방향을 잡습니다.</p>
             </div>
@@ -1843,15 +1782,15 @@
         </div>
         <div class="footer-info-item">
           <span>대표전화</span>
-          <b>010-5939-2010</b>
+          <b>010-0000-0000</b>
         </div>
         <div class="footer-info-item">
           <span>이메일</span>
-          <b>dapartner@naver.com</b>
+          <b>입력 필요</b>
         </div>
         <div class="footer-info-item">
           <span>운영시간</span>
-          <b>평일 10:00 - 18:00</b>
+          <b>평일 10:00 - 19:00</b>
         </div>
       </div>
     </div>
@@ -1933,77 +1872,6 @@
     setWorkTab(0);
     startAutoSlide();
 
-    /* 모바일 섹션 자동 슬라이드 - 안전한 페이드 교체 방식 */
-    const mobileSliderSelectors = [
-      '.hero-stats',
-      '.flow-grid',
-      '.step-grid',
-      '.platform-grid',
-      '.contract-grid'
-    ];
-
-    function setupSafeMobileSlider(selector, delay = 2600) {
-      const slider = document.querySelector(selector);
-      if (!slider) return;
-
-      const items = Array.from(slider.children);
-      if (items.length <= 1) return;
-
-      let index = 0;
-      let timer = null;
-      const mq = window.matchMedia('(max-width: 768px)');
-
-      function resetDesktop() {
-        items.forEach((item) => item.classList.remove('is-active'));
-      }
-
-      function activateMobile() {
-        items.forEach((item, i) => {
-          item.classList.toggle('is-active', i === index);
-        });
-      }
-
-      function next() {
-        if (!mq.matches) return;
-        items[index].classList.remove('is-active');
-        index = (index + 1) % items.length;
-        items[index].classList.add('is-active');
-      }
-
-      function start() {
-        stop();
-        if (!mq.matches) return;
-        activateMobile();
-        timer = setInterval(next, delay);
-      }
-
-      function stop() {
-        if (timer) {
-          clearInterval(timer);
-          timer = null;
-        }
-      }
-
-      slider.addEventListener('mouseenter', stop);
-      slider.addEventListener('mouseleave', start);
-      slider.addEventListener('touchstart', stop, { passive: true });
-      slider.addEventListener('touchend', start, { passive: true });
-
-      window.addEventListener('resize', () => {
-        stop();
-        if (mq.matches) {
-          index = 0;
-          activateMobile();
-          start();
-        } else {
-          resetDesktop();
-        }
-      });
-
-      start();
-    }
-
-    mobileSliderSelectors.forEach((selector) => setupSafeMobileSlider(selector));
   </script>
 </body>
 </html>
