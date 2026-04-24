@@ -1174,9 +1174,24 @@
       .step-wrap { padding: 30px; }
 
       .hero-stats,
+      .flow-grid,
       .platform-grid,
       .step-grid,
-      .contract-grid { grid-template-columns: 1fr; }
+      .contract-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .hero-stats .stat:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .platform-card,
+      .flow-card,
+      .contract-card,
+      .step-card {
+        min-width: 0;
+      }
 
       .btn-wrap { flex-direction: column; }
       .btn { width: 100%; }
@@ -1255,6 +1270,69 @@
         flex-direction: column;
         gap: 2px;
       }
+    }
+
+
+    @media (max-width: 480px) {
+      .container { width: calc(100% - 24px); }
+      .section { padding: 70px 0; }
+      h1 { font-size: 32px; line-height: 1.18; }
+      h2 { font-size: 24px; line-height: 1.3; }
+
+      .hero-stats,
+      .flow-grid,
+      .platform-grid,
+      .step-grid,
+      .contract-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .hero-stats .stat:last-child { grid-column: 1 / -1; }
+
+      .service-box,
+      .step-wrap,
+      .contract-box,
+      .cta-box {
+        border-radius: 24px;
+        padding: 22px 14px;
+      }
+
+      .flow-card,
+      .platform-card,
+      .contract-card { padding: 20px 12px; }
+
+      .flow-card h4,
+      .platform-card h4,
+      .contract-card h4,
+      .step-card h4 { font-size: 16px; }
+
+      .flow-card p,
+      .platform-card p,
+      .contract-card p,
+      .step-card p {
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .platform-icon {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 12px;
+      }
+
+      .platform-icon img {
+        width: 42px;
+        height: 42px;
+      }
+
+      .step-no {
+        width: 58px;
+        height: 58px;
+        font-size: 19px;
+      }
+
+      .contract-icon { font-size: 26px; }
     }
   </style>
 </head>
@@ -1697,19 +1775,19 @@
         </div>
         <div class="footer-info-item">
           <span>대표자</span>
-          <b>김이삭</b>
+          <b>입력 필요</b>
         </div>
         <div class="footer-info-item">
           <span>사업자등록번호</span>
-          <b>225-14-02754</b>
+          <b>입력 필요</b>
         </div>
         <div class="footer-info-item">
           <span>업태/종목</span>
-          <b>서비스업 / 광고 대행업</b>
+          <b>서비스업 / 입력 필요</b>
         </div>
         <div class="footer-info-item">
           <span>주소</span>
-          <b>서울특별시 강남구 테헤란로70길 12, 402-J930호</b>
+          <b>입력 필요</b>
         </div>
         <div class="footer-info-item">
           <span>대표전화</span>
