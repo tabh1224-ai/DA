@@ -1334,6 +1334,85 @@
 
       .contract-icon { font-size: 26px; }
     }
+
+
+    /* MOBILE AUTO SLIDE OVERRIDE */
+    @media (max-width: 768px) {
+      .hero-stats,
+      .flow-grid,
+      .step-grid,
+      .platform-grid,
+      .contract-grid {
+        display: flex !important;
+        grid-template-columns: none !important;
+        gap: 14px !important;
+        overflow: hidden;
+        width: 100%;
+        transition: transform .55s ease;
+        will-change: transform;
+      }
+
+      .hero-stats > *,
+      .flow-grid > *,
+      .step-grid > *,
+      .platform-grid > *,
+      .contract-grid > * {
+        flex: 0 0 82%;
+        max-width: 82%;
+      }
+
+      .hero-stats .stat:last-child {
+        grid-column: auto !important;
+      }
+
+      .hero-stats > * {
+        flex-basis: 78%;
+        max-width: 78%;
+      }
+
+      .platform-grid > * {
+        flex-basis: 78%;
+        max-width: 78%;
+      }
+
+      .step-grid > * {
+        flex-basis: 82%;
+        max-width: 82%;
+      }
+
+      .contract-grid > * {
+        flex-basis: 84%;
+        max-width: 84%;
+      }
+
+      .flow-grid > * {
+        flex-basis: 84%;
+        max-width: 84%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats,
+      .flow-grid,
+      .step-grid,
+      .platform-grid,
+      .contract-grid {
+        gap: 12px !important;
+      }
+
+      .hero-stats > *,
+      .platform-grid > * {
+        flex-basis: 82%;
+        max-width: 82%;
+      }
+
+      .flow-grid > *,
+      .step-grid > *,
+      .contract-grid > * {
+        flex-basis: 88%;
+        max-width: 88%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1880,6 +1959,83 @@
 
     setWorkTab(0);
     startAutoSlide();
+
+    /* 모바일 섹션 자동 슬라이드 */
+    const mobileSliderSelectors = [
+      '.hero-stats',
+      '.flow-grid',
+      '.step-grid',
+      '.platform-grid',
+      '.contract-grid'
+    ];
+
+    function setupMobileAutoSlider(selector) {
+      const track = document.querySelector(selector);
+      if (!track) return;
+
+      const items = Array.from(track.children);
+      if (items.length <= 1) return;
+
+      let index = 0;
+      let timer = null;
+      const mq = window.matchMedia('(max-width: 768px)');
+
+      function getGap() {
+        const style = window.getComputedStyle(track);
+        return parseFloat(style.columnGap || style.gap || 0) || 0;
+      }
+
+      function move() {
+        if (!mq.matches) {
+          track.style.transform = 'translateX(0)';
+          return;
+        }
+
+        const gap = getGap();
+        const itemWidth = items[0].getBoundingClientRect().width;
+        const moveX = index * (itemWidth + gap);
+        track.style.transform = `translateX(-${moveX}px)`;
+      }
+
+      function next() {
+        if (!mq.matches) return;
+        index = (index + 1) % items.length;
+        move();
+      }
+
+      function start() {
+        stop();
+        timer = setInterval(next, 2400);
+      }
+
+      function stop() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      }
+
+      track.addEventListener('mouseenter', stop);
+      track.addEventListener('mouseleave', start);
+      track.addEventListener('touchstart', stop, { passive: true });
+      track.addEventListener('touchend', start, { passive: true });
+
+      window.addEventListener('resize', () => {
+        if (!mq.matches) {
+          index = 0;
+          track.style.transform = 'translateX(0)';
+          return;
+        }
+        if (index >= items.length) index = 0;
+        move();
+      });
+
+      move();
+      start();
+    }
+
+    mobileSliderSelectors.forEach(setupMobileAutoSlider);
+
   </script>
 </body>
 </html>
