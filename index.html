@@ -1336,21 +1336,19 @@
     }
 
 
-    /* MOBILE AUTO SLIDE FIX - 100% WIDTH / NO CROP */
+    /* MOBILE SAFE AUTO SLIDER - FADE TYPE / NO CROP */
     @media (max-width: 768px) {
       .hero-stats,
       .flow-grid,
       .step-grid,
       .platform-grid,
       .contract-grid {
-        display: flex !important;
-        grid-template-columns: none !important;
-        gap: 0 !important;
+        display: block !important;
+        position: relative;
         overflow: hidden;
         width: 100%;
         max-width: 100%;
-        transition: transform .5s ease;
-        will-change: transform;
+        transform: none !important;
       }
 
       .hero-stats > *,
@@ -1358,25 +1356,34 @@
       .step-grid > *,
       .platform-grid > *,
       .contract-grid > * {
-        flex: 0 0 100% !important;
+        display: none !important;
         width: 100% !important;
-        min-width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
+        animation: mobileFadeSlide .45s ease;
+      }
+
+      .hero-stats > *.is-active,
+      .flow-grid > *.is-active,
+      .step-grid > *.is-active,
+      .platform-grid > *.is-active,
+      .contract-grid > *.is-active {
+        display: block !important;
       }
 
       .hero-stats .stat:last-child {
         grid-column: auto !important;
       }
-    }
 
-    @media (max-width: 480px) {
-      .hero-stats,
-      .flow-grid,
-      .step-grid,
-      .platform-grid,
-      .contract-grid {
-        gap: 0 !important;
+      @keyframes mobileFadeSlide {
+        from {
+          opacity: 0;
+          transform: translateX(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
     }
   </style>
@@ -1926,7 +1933,7 @@
     setWorkTab(0);
     startAutoSlide();
 
-    /* 모바일 섹션 자동 슬라이드 */
+    /* 모바일 섹션 자동 슬라이드 - 안전한 페이드 교체 방식 */
     const mobileSliderSelectors = [
       '.hero-stats',
       '.flow-grid',
@@ -1935,35 +1942,39 @@
       '.contract-grid'
     ];
 
-    function setupMobileAutoSlider(selector) {
-      const track = document.querySelector(selector);
-      if (!track) return;
+    function setupSafeMobileSlider(selector, delay = 2600) {
+      const slider = document.querySelector(selector);
+      if (!slider) return;
 
-      const items = Array.from(track.children);
+      const items = Array.from(slider.children);
       if (items.length <= 1) return;
 
       let index = 0;
       let timer = null;
       const mq = window.matchMedia('(max-width: 768px)');
 
-      function move() {
-        if (!mq.matches) {
-          track.style.transform = 'translateX(0)';
-          return;
-        }
+      function resetDesktop() {
+        items.forEach((item) => item.classList.remove('is-active'));
+      }
 
-        track.style.transform = `translateX(-${index * 100}%)`;
+      function activateMobile() {
+        items.forEach((item, i) => {
+          item.classList.toggle('is-active', i === index);
+        });
       }
 
       function next() {
         if (!mq.matches) return;
+        items[index].classList.remove('is-active');
         index = (index + 1) % items.length;
-        move();
+        items[index].classList.add('is-active');
       }
 
       function start() {
         stop();
-        timer = setInterval(next, 2400);
+        if (!mq.matches) return;
+        activateMobile();
+        timer = setInterval(next, delay);
       }
 
       function stop() {
@@ -1973,27 +1984,26 @@
         }
       }
 
-      track.addEventListener('mouseenter', stop);
-      track.addEventListener('mouseleave', start);
-      track.addEventListener('touchstart', stop, { passive: true });
-      track.addEventListener('touchend', start, { passive: true });
+      slider.addEventListener('mouseenter', stop);
+      slider.addEventListener('mouseleave', start);
+      slider.addEventListener('touchstart', stop, { passive: true });
+      slider.addEventListener('touchend', start, { passive: true });
 
       window.addEventListener('resize', () => {
-        if (!mq.matches) {
+        stop();
+        if (mq.matches) {
           index = 0;
-          track.style.transform = 'translateX(0)';
-          return;
+          activateMobile();
+          start();
+        } else {
+          resetDesktop();
         }
-        if (index >= items.length) index = 0;
-        move();
       });
 
-      move();
       start();
     }
 
-    mobileSliderSelectors.forEach(setupMobileAutoSlider);
-
+    mobileSliderSelectors.forEach((selector) => setupSafeMobileSlider(selector));
   </script>
 </body>
 </html>
