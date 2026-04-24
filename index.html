@@ -1016,6 +1016,83 @@
       padding-top: 28px;
     }
 
+
+    /* BUSINESS FOOTER */
+    .business-footer {
+      background: #1f1f1f;
+      color: rgba(255,255,255,0.72);
+      padding: 56px 0 42px;
+      font-size: 14px;
+    }
+
+    .business-footer .footer-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1.6fr;
+      gap: 40px;
+      align-items: start;
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .footer-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo-row img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .footer-logo-row strong {
+      color: #fff;
+      font-size: 20px;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.62);
+      line-height: 1.8;
+    }
+
+    .footer-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 24px;
+    }
+
+    .footer-info-item {
+      display: flex;
+      gap: 8px;
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .footer-info-item span {
+      flex: 0 0 auto;
+      color: rgba(255,255,255,0.44);
+      font-weight: 700;
+    }
+
+    .footer-info-item b {
+      color: rgba(255,255,255,0.82);
+      font-weight: 500;
+    }
+
+    .footer-copy {
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.38);
+      font-size: 13px;
+      text-align: center;
+    }
+
     @media (max-width: 1280px) {
       .platform-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1158,6 +1235,25 @@
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .business-footer {
+        padding: 44px 0 34px;
+      }
+
+      .business-footer .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-info-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .footer-info-item {
+        flex-direction: column;
+        gap: 2px;
       }
     }
   </style>
@@ -1584,10 +1680,54 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="business-footer">
     <div class="container footer-inner">
-      <div>© 2026 DA PARTNERS. All rights reserved.</div>
-      <div>배달앱 운영 대행 · 플랫폼 최적화 · 통합 플랫폼 관리</div>
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <img src="logo.jpg" alt="DA PARTNERS 로고" />
+          <strong>DA PARTNERS</strong>
+        </div>
+        <p>배달앱 운영 대행 · 플랫폼 최적화 · 통합 플랫폼 관리</p>
+      </div>
+
+      <div class="footer-info-grid">
+        <div class="footer-info-item">
+          <span>상호명</span>
+          <b>디에이파트너스</b>
+        </div>
+        <div class="footer-info-item">
+          <span>대표자</span>
+          <b>김이삭</b>
+        </div>
+        <div class="footer-info-item">
+          <span>사업자등록번호</span>
+          <b>225-14-02754</b>
+        </div>
+        <div class="footer-info-item">
+          <span>업태/종목</span>
+          <b>서비스업 / 광고 대행업</b>
+        </div>
+        <div class="footer-info-item">
+          <span>주소</span>
+          <b>서울특별시 강남구 테헤란로70길 12, 402-J930호</b>
+        </div>
+        <div class="footer-info-item">
+          <span>대표전화</span>
+          <b>010-0000-0000</b>
+        </div>
+        <div class="footer-info-item">
+          <span>이메일</span>
+          <b>입력 필요</b>
+        </div>
+        <div class="footer-info-item">
+          <span>운영시간</span>
+          <b>평일 10:00 - 19:00</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-copy">
+      © 2026 DA PARTNERS. All rights reserved.
     </div>
   </footer>
 
